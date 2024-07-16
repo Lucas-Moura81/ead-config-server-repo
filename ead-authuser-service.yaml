@@ -70,7 +70,19 @@ resilience4j:
         minimumNumberOfCalls: 2 
         waitDurationInOpenState: 30s
         failureRateThreshold: 80
-        
+
+##apenas para teste do actuator para auteração no pom em tempo de ex
+ authuser:
+   refreshscope:
+     name: Lucas Moura
+##end point actuator
+ management:
+   endpoints:
+     web:
+       exposure:
+         include:
+           - refresh
+           - health
         
 ##resilience4j usando retry para limitar o numero de chamadas para uma rest 
 ##maxAttempts tentativas de comunicação com o outro micro 
