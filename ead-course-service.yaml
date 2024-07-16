@@ -45,3 +45,12 @@ ead:
     queue:
       userEventQueue:
         name: ead.userevent.ms.course
+
+# end point actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - refresh
+          - health
