@@ -74,7 +74,7 @@ resilience4j:
 # apenas para teste do actuator para auteração no pom em tempo de ex
 authuser:
   refreshscope:
-    name: Lucas Moura!!!!!!!!!!
+    name: Lucas MouraSZSZSZ
 # end point actuator
 management:
   endpoints:
