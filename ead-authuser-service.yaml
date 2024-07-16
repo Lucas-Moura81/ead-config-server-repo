@@ -16,7 +16,8 @@ spring:
       ddl-auto: update
       dialect: org.hibernate.dialect.PostgreSQLDialect
     jdbc:
-      lob.non-contextual-creation: true
+      lob:
+        non-contextual-creation: true
     properties:
       hibernate:
         show_sql: true
@@ -27,7 +28,6 @@ spring:
   rabbitmq:
     addresses: amqps://njzjsgli:lIiBcBy7cR3_TeRNfzxar65snopQt94Z@cougar.rmq.cloudamqp.com/njzjsgli
 
-
 logging:
   level:
     com.ead: TRACE
@@ -36,32 +36,32 @@ logging:
     org.hibernate: INFO
     
 ead:
- api:
-  url:
-    course: 'http://ead-course-service/ead-course'
- broker:
+  api:
+    url:
+      course: 'http://ead-course-service/ead-course'
+  broker:
     exchange:
       userEvent: ead.userevent
-    
-## o eureca está configurado no config server    
-##eureka: 
-##  client: 
-##    serviceUrl:
-##      defaultZone: 'http://localhost:8761/eureka'
-##  instance: 
-##    hostname: localhost 
 
-##circuitbreakerInstance tipo da instancia
-##circuitbreakerInstance nome da instancia 
-##slidingWindowType tipo de contagem pode ser por quantidade ou tempo, aqui está por tempo
-##slidingWindowSize 30 s vai analisar a chamadas se foi ok ou falha.  
-##failureRateThreshold 80 taxa de falha 80 ou mais falha estado fechado para aberto 
-##minimumNumberOfCalls apos fazer 2 chamadas ele vai ve a tava de falhas  
-##waitDurationInOpenState: 30s periodo que ele fica no estado aberto
-## permittedNumberOfCalls: 2 estado meio aberto depois de 2 solicitações e ele vai analisar e se falahar volta para o estado aberto novamente.  
-##propriedades -->              
+# eureka está configurado no config server
+# eureka:
+#   client:
+#     serviceUrl:
+#       defaultZone: 'http://localhost:8761/eureka'
+#   instance:
+#     hostname: localhost 
+
+# circuitbreakerInstance tipo da instancia
+# circuitbreakerInstance nome da instancia 
+# slidingWindowType tipo de contagem pode ser por quantidade ou tempo, aqui está por tempo
+# slidingWindowSize 30 s vai analisar a chamadas se foi ok ou falha.  
+# failureRateThreshold 80 taxa de falha 80 ou mais falha estado fechado para aberto 
+# minimumNumberOfCalls apos fazer 2 chamadas ele vai ve a tava de falhas  
+# waitDurationInOpenState: 30s periodo que ele fica no estado aberto
+# permittedNumberOfCalls: 2 estado meio aberto depois de 2 solicitações e ele vai analisar e se falahar volta para o estado aberto novamente.  
+# propriedades -->              
 resilience4j:
-  circuitbreakerInstance:
+  circuitbreaker:
     instances:       
       circuitbreakerInstance:
         slidingWindowSize: 30
@@ -71,25 +71,25 @@ resilience4j:
         waitDurationInOpenState: 30s
         failureRateThreshold: 80
 
-##apenas para teste do actuator para auteração no pom em tempo de ex
- authuser:
-   refreshscope:
-     name: Lucas Moura
-##end point actuator
- management:
-   endpoints:
-     web:
-       exposure:
-         include:
-           - refresh
-           - health
-        
-##resilience4j usando retry para limitar o numero de chamadas para uma rest 
-##maxAttempts tentativas de comunicação com o outro micro 
-##waitDuration tempo de espera para realizar a proxi chamada. 
-##resilience4j:
-##  retry:
-##    instances:
-##      retryInstance:
-##       maxAttempts: 3 
-##        waitDuration: 5s 
+# apenas para teste do actuator para auteração no pom em tempo de ex
+authuser:
+  refreshscope:
+    name: Lucas Moura
+# end point actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - refresh
+          - health
+
+# resilience4j usando retry para limitar o numero de chamadas para uma rest 
+# maxAttempts tentativas de comunicação com o outro micro 
+# waitDuration tempo de espera para realizar a proxi chamada. 
+# resilience4j:
+#   retry:
+#     instances:
+#       retryInstance:
+#         maxAttempts: 3 
+#         waitDuration: 5s 
