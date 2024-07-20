@@ -7,9 +7,10 @@ spring:
   application:
     name: ead-notification-service
   datasource:
-    url:  jdbc:postgresql://localhost:5432/ead-notification
+    url: jdbc:postgresql://localhost:5432/ead-notification
     username: postgres
     password: root
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -21,10 +22,9 @@ spring:
         show_sql: true
   output:
     ansi:
-      enabled: Always
+      enabled: always
   rabbitmq:
     addresses: amqps://njzjsgli:lIiBcBy7cR3_TeRNfzxar65snopQt94Z@cougar.rmq.cloudamqp.com/njzjsgli
-
 
 logging:
   level:
@@ -33,8 +33,6 @@ logging:
     org.springframework.web: DEBUG
     org.hibernate: INFO
 
-
-# inserir broker properties
 ead:
   broker:
     exchange:
@@ -45,7 +43,6 @@ ead:
     key:
       notificationCommandKey: ms.notification 
 
-
 management:
   endpoints:
     web:
@@ -53,5 +50,3 @@ management:
         include:
           - refresh
           - health
-
-
