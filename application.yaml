@@ -8,6 +8,9 @@ spring:
     name: ead-config-server
 
 ead:
+  configService:
+    username: configserver
+    password: 'Config123'  
   serviceRegistry:
     username: serviceregistry
     password: 'Lucas123'
