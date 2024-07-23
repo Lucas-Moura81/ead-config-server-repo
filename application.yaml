@@ -11,6 +11,9 @@ ead:
   serviceRegistry:
     username: serviceregistry
     password: 'Lucas123'
+  configService:
+    username: configserver
+    password: 'Config123' 
     
 ## se cadastrando no eureka 
 eureka:
